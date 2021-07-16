@@ -1,0 +1,59 @@
+/* ############################ CONTAINERS ############################  */
+body {
+    background-color: #F5F4F2;
+}
+
+header {
+    display: flex;
+    background-color: #3E6573;
+}
+
+img {
+    max-width: 100px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+    padding: 10px;
+}
+
+.separator {
+    width: 3vw;
+}
+
+#setup {
+    background-color: #BFE3F3;
+    margin: 10vh auto;
+    padding: 5vh 5vw;
+}
+
+/* ############################ FONTS ############################  */
+header h1 {
+    color: #0C343D;
+    font-family: Helvetica;
+    font-weight: 100;
+    font-stretch: condensed;
+    font-size: 30px;
+}
+
+@media screen and (max-width: 960px) {
+    header h1 {
+        font-size: 20px;
+    }
+}
+
+
+/* ############################ OTHER ############################  */
+button {
+    margin: 5vh auto;
+}
+
+.thumbnail {
+    margin-bottom: 100px;
+}
+
+
+
+
+
+
+/* ############################ ANIMATIONS ############################  */
