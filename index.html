@@ -18,6 +18,7 @@
         <link href="styles.css" rel="stylesheet">
         <script type="module" src="scripts/script.js"></script>
         <script type="module" src="scripts/helpers.js"></script>
+        <script type="module" src="scripts/thread_local.js"></script>
         <title>My Webpage</title>
         <link rel="icon" href="/favicon.ico">
     </head>
@@ -40,7 +41,7 @@
         </header>
 
         <main>
-            <div class="container-lg" id="setup">
+            <div class="container-lg outer-div" id="setup">
 
                 <!-- Settings inputs -->
                 <form id="settings">
@@ -49,18 +50,18 @@
                     <div class="col-sm-3 text-center">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon2">#</span>
-                            <input type="number" id="n_rows" name="" class="form-control input-field" placeholder="Rows">
+                            <input type="number" id="n_rows" min=1 class="form-control input-field" placeholder="Rows">
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon2">#</span>
-                            <input type="number" id="n_cols" name="" class="form-control" placeholder="Columns">
+                            <input type="number" id="n_cols" min=1 class="form-control" placeholder="Columns">
                         </div>
                     </div>
                     <div class="col-sm-3 text-center">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon2">px</span>
-                            <input type="number" id="img_size" name="" class="form-control" placeholder="Image size">
+                            <input type="number" id="img_size" min=1 class="form-control" placeholder="Image size">
                         </div>
                     </div>
                 </div>
@@ -73,9 +74,10 @@
 
             </div>
 
-            <div class="container-fluid" id="img-grid">
-                <div id="outp">
+            <div class="container-xxl outer-div" id="outer-img-grid">
+                <div id="img-grid">
                     Hello container
+                    <img src="" alt="" id="outp">
                 </div>
                 <button type="button" id="test_button">Press this button</button>
             </div>

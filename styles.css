@@ -1,11 +1,11 @@
 /* ############################ CONTAINERS ############################  */
 body {
-    background-color: #F5F4F2;
+    background-color: #E2D4C1;
 }
 
 header {
     display: flex;
-    background-color: #3E6573;
+    background-color: #88A2A2;
 }
 
 img {
@@ -20,10 +20,14 @@ img {
     width: 3vw;
 }
 
-#setup {
-    background-color: #BFE3F3;
+.outer-div {
+    background-color: #4A3F50;
     margin: 10vh auto;
     padding: 5vh 5vw;
+}
+
+#outer-img-grid {
+    background-color: #BACFBA;
 }
 
 /* ############################ FONTS ############################  */
