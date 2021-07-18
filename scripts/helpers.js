@@ -40,9 +40,7 @@ export function loadXMLDoc(url, callback) {
 // Get URL's response as XML from query ========================================
 export function getAlbumCovers(str) {
     // Preprocess query
-    let query = str
-        .toLowerCase()
-        .replace(' ', '_');
+    let query = str.replace(' ', '_');
 
     // Get URL response
     const query_url = `https://musicbrainz.org/ws/2/release?query=${query}&limit=10`;
