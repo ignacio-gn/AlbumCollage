@@ -1,5 +1,6 @@
-// Thread-local variables
+// Thread-local variables ######################################################
 
+// Settings
 export const DEF_ROWS = 4;
 export const DEF_COLS = 4;
 export const DEF_IMGSIZE = 200;
@@ -8,6 +9,14 @@ export const DEF_SETTINGS = {
     n_cols: DEF_COLS,
     img_size: DEF_IMGSIZE
 };
+
+// Query search
+export const DEF_QUERY = {
+    n_rows: 2,
+    n_cols: 5
+}
+
+// Page loading
 export const DEF_IMGARR = [
     [
         "https://ia800608.us.archive.org/27/items/mbid-fcc76615-2443-4920-8218-21f27f9487c0/mbid-fcc76615-2443-4920-8218-21f27f9487c0-16508615758_thumb500.jpg",  // Paramore: After Laughter

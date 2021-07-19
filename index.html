@@ -74,11 +74,40 @@
 
             </div>
 
+            <!-- Image grid -->
             <div class="container-xxl outer-div" id="outer-img-grid">
                 <div id="img-grid">
+                    <!-- JS-added content -->
+                </div>
+                <img id="outp" />
+                <button type="button" name="button" id="test_button" class="btn btn-primary">Button</button>
+            </div>
+
+            <!-- Modal query div (markup taken from https://getbootstrap.com/docs/4.6/components/modal/)-->
+            <div class="modal fade" id="searchModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <input type="text" id="search_query" class="form-control" autocomplete="off" placeholder="Enter album name"/>
+                                <div id="query-grid">
+                                    <!-- JS-added content -->
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="search_btn" type="button" class="btn btn-primary">Search</button>
+                        </div>
+
 
                 </div>
-                <button type="button" id="test_button">Press this button</button>
+              </div>
             </div>
 
         </main>
