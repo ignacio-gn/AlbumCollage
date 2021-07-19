@@ -1,6 +1,6 @@
 import * as thread from "./thread_local.js";
 
-// ########################### Button functionality ############################
+// Button functionality ########################################################
 // Get settings ================================================================
 export function getSettings() {
     let outp = {
@@ -22,7 +22,7 @@ export function getSettings() {
     return outp;
 }
 
-// ################################ Music Query ################################
+// Music Query #################################################################
 // Load XML response as JSON ===================================================
 export function loadXMLDoc(url, callback) {
     let xhttp = new XMLHttpRequest();
@@ -57,7 +57,7 @@ export function getAlbumCovers(str) {
 }
 
 // Get list of mdIDs from xml object ===========================================
-function getMBIDs(xml) {
+export function getMBIDs(xml) {
     // Local variables
     let xmlDoc = xml.responseXML;
     let mbids = xmlDoc.getElementsByTagName("release");
@@ -71,4 +71,17 @@ function getMBIDs(xml) {
 
     // Return output
     console.log(outp);
+}
+
+// Grid functionality ##########################################################
+// Drop: Swap items ============================================================
+export function swapOnDrop(item1, item2) {
+    let src1 = item1.src;
+    let src2 = item2.src;
+    // Switch
+    item1.src = src2;
+    item2.src = src1;
+    // Reset style
+    item1.style.padding = "0";
+    item2.style.padding = "0";
 }

@@ -34,6 +34,3 @@ export const DEF_IMGARR = [
         "https://ia803106.us.archive.org/15/items/mbid-9817e9df-c757-4931-b4eb-0a5f62347f01/mbid-9817e9df-c757-4931-b4eb-0a5f62347f01-24658063290_thumb500.jpg"  // FT: Poetry of the Deed
     ]
 ];
-
-export let settings = DEF_SETTINGS;
-export let img_arr = DEF_IMGARR;
