@@ -2,14 +2,20 @@ import * as lib from "./helpers.js";
 import * as thread from "./thread_local.js";
 
 /* TODO
-- Implement query window functionality
-- Fix settings getting adjusted anyways even if
+- Allow more than 4 rows to be displayed
+- Close modal query window on selection
+- Delete img size input
+- Add labels for column and row inputs, relocate them
+- Fix settings being set to default after invalid input
+- Fix memory being deleted after updating settings (add function to update img_arr thorugh READING)
+- Implement downloading functionality
 
 */
 
 // Global variables ############################################################
 let settings = thread.DEF_SETTINGS;
 let img_arr = thread.DEF_IMGARR;
+let img_selected;
 let dragged;
 
 // Build JS functions ##########################################################
@@ -19,7 +25,6 @@ function build() {
     buildSubmitButton();
     buildSearchButton();
     buildTestButton();
-    //lib.getAlbumCovers("In A Million Years");
     buildImgGrid(thread.DEF_IMGARR, thread.DEF_SETTINGS);
 }
 
@@ -39,10 +44,12 @@ function buildSearchButton() {
     let button = document.querySelector("#search_btn");
     button.onclick = () => {
         let search_query = lib.getSearchQuery();
-        //lib.clearImageArray();
+        lib.clearImageArray();
         lib.getAlbumCovers(search_query);
         console.log("Bulding query array: ", lib.global_image_array)
-        buildQueryGrid(lib.global_image_array)
+        setTimeout(() => {
+            buildQueryGrid(lib.global_image_array)
+        }, 2500);
     }
 }
 
@@ -56,7 +63,8 @@ function buildTestButton() {
     let btn = document.querySelector("#test_button");
     // Build button
     btn.onclick = () => {
-        lib.loadXMLDoc(url, callback);
+        //lib.loadXMLDoc(url, callback);
+        console.log("global: ", lib.global_image_array);
     }
 }
 
@@ -65,7 +73,7 @@ function buildTestButton() {
 // Grid: Populate image grid ===================================================
 function buildImgGrid(imgArray, settings) {
     // Clear previous grid
-    let previous_grid = document.querySelectorAll(".album-cover");
+    let previous_grid = document.querySelectorAll("#image-grid-row");
     previous_grid.forEach(item => item.remove());
 
     // Define new grid
@@ -76,6 +84,7 @@ function buildImgGrid(imgArray, settings) {
         // Define local row and its classes
         let local_row = document.createElement("div");
         local_row.className = "d-flex justify-content-center align-items-center";
+        local_row.id = "image-grid-row";
 
         // Iterate through columns
         for (let col_idx = 0; col_idx < settings.n_cols; col_idx ++) {
@@ -87,6 +96,11 @@ function buildImgGrid(imgArray, settings) {
             local_img.draggable = "true";
             local_img.dataset.toggle = "modal";
             local_img.dataset.target = "#searchModal";
+            local_img.onclick = function() {
+                img_selected = local_img;
+                alert(local_img);
+            }
+
             // Try to define source image
             let src = imgArray[row_idx][col_idx];
             if (!src) {
@@ -94,7 +108,7 @@ function buildImgGrid(imgArray, settings) {
             }
             local_img.src = src;
 
-            // Append a element to row
+            // Append img element to row
             local_row.appendChild(local_img);
         }
 
@@ -108,19 +122,18 @@ function buildQueryGrid(queryArray) {
     // Clear previous grid
     lib.clearSearchQuery();
 
-    // Define new grid
+    // Define grid
     let query_grid = document.getElementById("query-grid");
 
-    // Iterate thorugh rows
-    for (let row_idx = 0; row_idx < thread.DEF_QUERY.n_rows; row_idx ++) {
+    // Iterate thorugh img elements
+    for (let row_idx = 0; row_idx < thread.DEF_QUERY.n_rows; row_idx++) {
         // Define local row and its attributes
         let local_row = document.createElement("div");
         local_row.className = "d-flex justify-content-center align-items-center";
-        local_row.style.marginBottom = 3
+        local_row.id = "query-row";
 
-        // Iterate through columns
-        for (let col_idx = 0; col_idx < thread.DEF_QUERY.n_cols; col_idx ++) {
-
+        for (let col_idx = 0; col_idx < thread.DEF_QUERY.n_cols && row_idx * thread.DEF_QUERY.n_cols + col_idx < queryArray.length; col_idx ++) {
+            let i = row_idx * thread.DEF_QUERY.n_cols + col_idx;
             // Define local img and attributes
             let local_img = document.createElement("img");
             local_img.className = "query-img";
@@ -128,17 +141,21 @@ function buildQueryGrid(queryArray) {
             // Try to define source image
             let src;
             try {
-                src = queryArray[row_idx][col_idx];
+                src = queryArray[i];
             }
             catch (TypeError) {
                 src = "static/stock_empty.png";
             }
             local_img.src = src;
+            // Add replace functionality
+            local_img.onclick = function() {
+                // Update src
+                img_selected.src = src;
+            }
 
-            // Append a element to row
+            // Appendimg element to row
             local_row.appendChild(local_img);
         }
-
         // Append row element to grid
         query_grid.appendChild(local_row);
     }

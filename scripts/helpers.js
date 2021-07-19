@@ -1,5 +1,9 @@
 import * as thread from "./thread_local.js";
-let global_image_array = [];
+
+// Global variables ############################################################
+export let global_image_array = [];
+
+
 // Button functionality ########################################################
 // Get settings ================================================================
 export function getSettings() {
@@ -22,11 +26,13 @@ export function getSettings() {
     return outp;
 }
 
+
 // Get search query ============================================================
 export function getSearchQuery() {
     let outp = document.querySelector("#search_query").value;
     return outp;
 }
+
 
 // Music Query #################################################################
 // Load XML response as JSON ===================================================
@@ -42,6 +48,7 @@ export function loadXMLDoc(url, callback) {
     xhttp.open("GET", url, true);
     xhttp.send();
 }
+
 
 // Get URL's response as XML from query ========================================
 export function getAlbumCovers(str) {
@@ -67,6 +74,7 @@ export function getAlbumCovers(str) {
     xhttp.send();
 }
 
+
 // Get list of mdIDs from xml object ===========================================
 export function getMBIDs(xml) {
     // Local variables
@@ -83,6 +91,7 @@ export function getMBIDs(xml) {
     return outp;
 }
 
+
 function getImgSources(mbids) {
     // Local variables
     let callback = function(content) {
@@ -98,7 +107,8 @@ function getImgSources(mbids) {
     }
 }
 
-// Grid functionality ##########################################################
+
+// Image grid functionality ####################################################
 // Drop: Swap items ============================================================
 export function swapOnDrop(item1, item2) {
     let src1 = item1.src;
@@ -111,13 +121,30 @@ export function swapOnDrop(item1, item2) {
     item2.style.padding = "0";
 }
 
-// Search query
-// Clear search query
-export function clearSearchQuery() {
-    let previous_grid = document.querySelectorAll(".query-img");
-    previous_grid.forEach(item => item.remove());
+// Get location of item in 2-dimensional array
+export function findIn2DArray(item, array) {
+    for (let row_idx = 0; row_idx < array.length; row_idx ++) {
+        for (let col_idx = 0; col_idx < array.length; col_idx ++) {
+            if (array[row_idx][col_idx] == item) {
+                return {
+                    "row_idx": row_idx,
+                    "col_idx": col_idx
+                };
+            }
+        }
+    }
 }
 
+
+// Search Query functionality ####################################################
+// Clear image array
 export function clearImageArray() {
     global_image_array = [];
+}
+
+// Clear search query
+export function clearSearchQuery() {
+    let previous_rows = document.querySelectorAll("#query-row");
+    previous_rows.forEach(item => item.remove());
+
 }
