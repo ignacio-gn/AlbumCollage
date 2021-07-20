@@ -2,11 +2,9 @@ import * as lib from "./helpers.js";
 import * as thread from "./thread_local.js";
 
 /* TODO
-- Allow more than 4 rows to be displayed
 - Close modal query window on selection
 - Delete img size input
 - Add labels for column and row inputs, relocate them
-- Fix settings being set to default after invalid input
 - Fix memory being deleted after updating settings (add function to update img_arr thorugh READING)
 - Implement downloading functionality
 
@@ -34,7 +32,10 @@ function buildSubmitButton() {
     let button = document.querySelector("#settings_button");
     button.onclick = () => {
         let new_settings = lib.getSettings();
-        settings = new_settings;
+        if (new_settings) {
+            settings = new_settings;
+        }
+        img_arr = lib.updateImageArray(settings);
         buildImgGrid(img_arr, settings);
     }
 }
@@ -98,7 +99,6 @@ function buildImgGrid(imgArray, settings) {
             local_img.dataset.target = "#searchModal";
             local_img.onclick = function() {
                 img_selected = local_img;
-                alert(local_img);
             }
 
             // Try to define source image

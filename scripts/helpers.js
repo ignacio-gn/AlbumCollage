@@ -12,15 +12,12 @@ export function getSettings() {
         "n_cols": document.querySelector("#n_cols").value,
         "img_size": document.querySelector("#img_size").value
     };
+
     // Check for invalid inputs
     for (let key in outp) {
         if (outp[key] < 1) {
             alert("Invalid settings");
-            return outp = {
-                n_rows: thread.DEF_ROWS,
-                n_cols: thread.DEF_COLS,
-                img_size: thread.DEF_IMGSIZE
-            };
+            return false;
         }
     }
     return outp;
@@ -91,12 +88,11 @@ export function getMBIDs(xml) {
     return outp;
 }
 
-
+// Get image sources from array ================================================
 function getImgSources(mbids) {
     // Local variables
     let callback = function(content) {
         global_image_array.push(content.images[0].thumbnails.large);
-        console.log("imgsources: ", global_image_array)
     }
 
     // Populate output
@@ -122,17 +118,39 @@ export function swapOnDrop(item1, item2) {
 }
 
 // Get location of item in 2-dimensional array
-export function findIn2DArray(item, array) {
-    for (let row_idx = 0; row_idx < array.length; row_idx ++) {
-        for (let col_idx = 0; col_idx < array.length; col_idx ++) {
-            if (array[row_idx][col_idx] == item) {
-                return {
-                    "row_idx": row_idx,
-                    "col_idx": col_idx
-                };
-            }
+export function updateImageArray(settings) {
+    // Local Variables
+    let n_cols = Number(settings.n_cols);
+    let n_rows = Number(settings.n_rows);
+    let img_rows = document.querySelectorAll("#image-grid-row");
+    let outp = [];
+
+    // Populate new array
+    for (let row_idx = 0; row_idx < n_rows; row_idx ++) {
+        // Define local rows
+        let outp_row = [];
+        let local_row;
+        try {
+            local_row = [...img_rows[row_idx].querySelectorAll(".album-cover")]
+                .map(item => item.src);
         }
+        catch (TypeError) {
+            local_row = [];
+        }
+
+        for (let col_idx = 0; col_idx < n_cols; col_idx ++) {
+            // Define local image
+            let local_img = local_row[col_idx];
+            if (!local_img) {
+                local_img = "static/stock_empty.png";
+            }
+            // Append img to row
+            outp_row.push(local_img);
+        }
+        // Append row to output
+        outp.push(outp_row);
     }
+    return outp;
 }
 
 
