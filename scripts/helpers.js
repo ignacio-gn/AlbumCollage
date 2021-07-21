@@ -43,6 +43,7 @@ export function loadXMLDoc(url, callback) {
         }
     };
     xhttp.open("GET", url, true);
+    //xhttp.setRequestHeader("user-agent", "AlbumCollage/1.0 ( ignacio.garcian15@gmail.com )");
     xhttp.send();
 }
 
@@ -68,6 +69,7 @@ export function getAlbumCovers(str) {
     };
     // Send request
     xhttp.open("GET", query_url, true);
+    //xhttp.setRequestHeader("user-agent", "AlbumCollage/1.0 ( ignacio.garcian15@gmail.com )");
     xhttp.send();
 }
 
