@@ -1,13 +1,16 @@
 import * as lib from "./helpers.js";
 import * as thread from "./thread_local.js";
 
-/* TODO
-- Close modal query window on selection
-- Delete img size input
-- Add labels for column and row inputs, relocate them
-- Fix memory being deleted after updating settings (add function to update img_arr thorugh READING)
+/* TODO - BEFORE RELEASE
 - Implement downloading functionality
 
+TODO - MAYBE
+- Fix query loading to match request
+- Delete img size input
+- Add labels for column and row inputs, relocate them
+
+TODO - OPTIONAL
+- Implement random
 */
 
 // Global variables ############################################################
@@ -138,6 +141,7 @@ function buildQueryGrid(queryArray) {
             let local_img = document.createElement("img");
             local_img.className = "query-img";
             local_img.style = `width: ${settings.img_size}px; height: ${settings.img_size}px;`;
+            local_img.dataset.dismiss = "modal";
             // Try to define source image
             let src;
             try {
