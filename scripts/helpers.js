@@ -10,7 +10,7 @@ export function getSettings() {
     let outp = {
         "n_rows": document.querySelector("#n_rows").value,
         "n_cols": document.querySelector("#n_cols").value,
-        "img_size": document.querySelector("#img_size").value
+        "img_size": thread.DEF_IMGSIZE
     };
 
     // Check for invalid inputs
@@ -19,6 +19,11 @@ export function getSettings() {
             alert("Invalid settings");
             return false;
         }
+    }
+    let vw_width = window.innerWidth;
+    if (outp.n_cols * 100 > vw_width) {
+        alert("Excessive amount of columns");
+        return false;
     }
     return outp;
 }

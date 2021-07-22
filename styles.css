@@ -1,11 +1,11 @@
 /* ############################ CONTAINERS ############################  */
 body {
-    background-color: #E2D4C1;
+    background-color: #F9F3CB;
 }
 
 header {
     display: flex;
-    background-color: #88A2A2;
+    background-color: #E99142;
 }
 
 img {
@@ -21,13 +21,13 @@ img {
 }
 
 .outer-div {
-    background-color: #4A3F50;
-    margin: 10vh auto;
+    background-color: #F2A06A;
+    margin: 5vh auto;
     padding: 5vh 5vw;
 }
 
 #outer-img-grid {
-    background-color: #BACFBA;
+    background-color: #FFFFFF;
 }
 
 /* ############################ FONTS ############################  */
@@ -39,16 +39,26 @@ header h1 {
     font-size: 30px;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 575px) {
     header h1 {
         font-size: 20px;
     }
+    .setting-header {
+        display: none;
+    }
+}
+
+.setting-header {
+    color: #0F0F0F;
+    font-family: Helvetica;
+    font-weight: lighter;
+    font-size: 20px;
 }
 
 
 /* ############################ OTHER ############################  */
 button {
-    margin: 5vh auto;
+    margin: 0 auto;
 }
 
 .thumbnail {
@@ -60,6 +70,15 @@ button {
     margin: 0;
 }
 
+.btn-primary {
+    background-color: #234C8F;
+    border-color: #234C8F;
+}
+
+.btn-primary:hover {
+    background-color: #14A6C1;
+    border-color: #14A6C1;
+}
 
 
 
