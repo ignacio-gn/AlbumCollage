@@ -1,4 +1,4 @@
-# AlbumCollage ##
+# AlbumCollage #
 # Description #
 This is a simple web application made to build collages out of album cover images.
 The album cover images are standardized and are found within the web application taking a user query, using the [MusicBrainz API](https://musicbrainz.org/doc/MusicBrainz_API "MusicBrainz API").
@@ -18,10 +18,12 @@ For now, a screenshot of the collage must be taken to download the collage, but 
 
 
 # Examples #
-4x4
+### 4x4 ###
+
 ![](https://github.com/ignacio-gn/AlbumCollage/blob/main/static/example1.png)
 
-3x4
+### 3x4 ###
+
 ![](https://github.com/ignacio-gn/AlbumCollage/blob/main/static/example4.png)
 
 
