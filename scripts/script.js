@@ -1,15 +1,8 @@
 import * as lib from "./helpers.js";
 import * as thread from "./thread_local.js";
 
-/* TODO - BEFORE RELEASE
+/* TODO
 - Implement downloading functionality
-
-TODO - MAYBE
-- Delete img size input
-- Add labels for column and row inputs, relocate them
-
-TODO - OPTIONAL
-- Implement random
 */
 
 
