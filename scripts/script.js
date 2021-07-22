@@ -50,10 +50,7 @@ function buildSearchButton() {
         let search_query = lib.getSearchQuery();
         lib.clearImageArray();
         lib.getAlbumCovers(search_query);
-        console.log("Bulding query array: ", lib.global_image_array)
-        setTimeout(() => {
-            buildQueryGrid(lib.global_image_array)
-        }, 2500);
+        implicitlyWait();
     }
 }
 
@@ -218,3 +215,21 @@ document.addEventListener("drop", function(event) {
         lib.swapOnDrop(event.target, dragged);
     }
 })
+
+
+// Async API response waiting ##################################################
+// Check for API response ======================================================
+function checkAPIResponse() {
+    if (lib.global_image_array.length > 0) {
+        console.log("API responded");
+        buildQueryGrid(lib.global_image_array)
+    }
+    else {
+        implicitlyWait();
+    }
+}
+
+// ImplicitlyWait (async) ======================================================
+function implicitlyWait() {
+    setTimeout(checkAPIResponse, 1000)
+}

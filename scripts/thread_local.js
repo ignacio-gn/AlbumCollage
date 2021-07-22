@@ -20,7 +20,7 @@ export const DEF_QUERY = {
 export const DEF_IMGARR = [
     [
         "https://ia800608.us.archive.org/27/items/mbid-fcc76615-2443-4920-8218-21f27f9487c0/mbid-fcc76615-2443-4920-8218-21f27f9487c0-16508615758_thumb500.jpg",  // Paramore: After Laughter
-        "https://ia801402.us.archive.org/15/items/mbid-da013176-3819-4435-9372-d57b08f84bb8/mbid-da013176-3819-4435-9372-d57b08f84bb8-29813872335_thumb500.jpg",  // Paramore: Brand New Eyes
+        "https://ia803001.us.archive.org/21/items/mbid-aa658dc0-cdce-4723-a7d6-c049aaae7a0b/mbid-aa658dc0-cdce-4723-a7d6-c049aaae7a0b-23886942303_thumb500.jpg",  // Dire Straits: Dire Straits
         "https://ia601908.us.archive.org/1/items/mbid-e043200d-189e-40e1-9cab-1d6141c10bc7/mbid-e043200d-189e-40e1-9cab-1d6141c10bc7-27620911388_thumb500.jpg",  // Pearl Jam: Backspacer
         "https://ia800207.us.archive.org/11/items/mbid-176eedfe-de5c-3a7c-bdeb-1c900d317524/mbid-176eedfe-de5c-3a7c-bdeb-1c900d317524-7309790879_thumb500.jpg",  // RHCP: Stadium Arcadium
     ],
@@ -33,7 +33,7 @@ export const DEF_IMGARR = [
     [
         "https://ia801602.us.archive.org/23/items/mbid-f6483d43-aa10-4131-b594-9ce882970130/mbid-f6483d43-aa10-4131-b594-9ce882970130-3370522521_thumb500.jpg",  // No Doubt: Tragic Kingdom
         "https://ia903000.us.archive.org/21/items/mbid-e6ed4fe1-517e-4b12-b26a-9290fc3cdf6f/mbid-e6ed4fe1-517e-4b12-b26a-9290fc3cdf6f-23374669976_thumb500.jpg",  // LD: Yumeno Garden
-        "https://ia800209.us.archive.org/24/items/mbid-dd1707e8-4b1f-4e90-ad8f-ef84896725ad/mbid-dd1707e8-4b1f-4e90-ad8f-ef84896725ad-5189095468_thumb500.jpg",  // TJG: She's A Riot
+        "https://ia803001.us.archive.org/35/items/mbid-af36ad31-f54c-398e-82bf-6cf711890fba/mbid-af36ad31-f54c-398e-82bf-6cf711890fba-5825227750_thumb500.jpg",  // S&TB: Twice Upon A Time
         "https://ia802800.us.archive.org/4/items/mbid-fa86fb0d-9428-46ba-86ec-d8e803156b5a/mbid-fa86fb0d-9428-46ba-86ec-d8e803156b5a-23850615876_thumb500.jpg",  // Half-Alive: Now, not yet
     ],
     [
