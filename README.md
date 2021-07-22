@@ -28,5 +28,7 @@ For now, a screenshot of the collage must be taken to download the collage, but 
 
 
 # Acknowledgements #
-- This project was heavily inspired in [Album-Art-Collage-Generator](https://github.com/xsaardo/Album-Art-Collage-Creator) by [xsaardo](https://github.com/xsaardo).
+- This project was heavily inspired in:
+  - [Topsters 2.1](https://www.neverendingchartrendering.org/) by [Coleman Gariety](https://hegelsbagels.net/about/ "Coleman Gariety's webblog")
+  - [Album-Art-Collage-Generator](https://github.com/xsaardo/Album-Art-Collage-Creator) by [xsaardo](https://github.com/xsaardo "xsaardo's github page").
 - [Music Brainz](https://musicbrainz.org/ "Music Brainz"), for providing a very useful API and for their large open-access music database.
