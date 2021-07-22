@@ -23,7 +23,6 @@ export function getSettings() {
     return outp;
 }
 
-
 // Get search query ============================================================
 export function getSearchQuery() {
     let outp = document.querySelector("#search_query").value;
@@ -46,7 +45,6 @@ export function loadXMLDoc(url, callback) {
     //xhttp.setRequestHeader("user-agent", "AlbumCollage/1.0 ( ignacio.garcian15@gmail.com )");
     xhttp.send();
 }
-
 
 // Get URL's response as XML from query ========================================
 export function getAlbumCovers(str) {
@@ -72,7 +70,6 @@ export function getAlbumCovers(str) {
     //xhttp.setRequestHeader("user-agent", "AlbumCollage/1.0 ( ignacio.garcian15@gmail.com )");
     xhttp.send();
 }
-
 
 // Get list of mdIDs from xml object ===========================================
 export function getMBIDs(xml) {
@@ -119,7 +116,7 @@ export function swapOnDrop(item1, item2) {
     item2.style.padding = "0";
 }
 
-// Get location of item in 2-dimensional array
+// Update Image array by reading grid src ======================================
 export function updateImageArray(settings) {
     // Local Variables
     let n_cols = Number(settings.n_cols);
@@ -155,8 +152,43 @@ export function updateImageArray(settings) {
     return outp;
 }
 
+// Shuffling an array ==========================================================
+export function shuffleArray(arr) {
+    for (let i = 0; i < arr.length; i ++) {
+        // Local variables
+        let local_item = arr[i];
+        let random_idx = Math.floor(Math.random() * (arr.length));
+        let random_item = arr[random_idx];
 
-// Search Query functionality ####################################################
+        // Swap items
+        arr[i] = random_item;
+        arr[random_idx] = local_item;
+    }
+    return arr
+}
+
+// Building nested array out of array and specifications =======================
+export function buildFormattedArray(arr, settings) {
+    // Local variables
+    let formatted = [];
+    let n_rows = settings.n_rows;
+    let n_cols = settings.n_cols;
+
+    // Build nested array
+    for (let row_idx = 0; row_idx < n_rows; row_idx ++) {
+        let local_row = [];
+        for (let col_idx = 0; col_idx < n_cols; col_idx ++) {
+            let local_idx = row_idx * n_cols + col_idx;
+            local_row.push(arr[local_idx]);
+        }
+        formatted.push(local_row);
+    }
+    return formatted;
+}
+
+
+
+// Search Query functionality ##################################################
 // Clear image array
 export function clearImageArray() {
     global_image_array = [];

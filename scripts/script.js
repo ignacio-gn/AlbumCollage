@@ -5,7 +5,6 @@ import * as thread from "./thread_local.js";
 - Implement downloading functionality
 
 TODO - MAYBE
-- Fix query loading to match request
 - Delete img size input
 - Add labels for column and row inputs, relocate them
 
@@ -13,11 +12,13 @@ TODO - OPTIONAL
 - Implement random
 */
 
+
 // Global variables ############################################################
 let settings = thread.DEF_SETTINGS;
 let img_arr = thread.DEF_IMGARR;
 let img_selected;
 let dragged;
+
 
 // Build JS functions ##########################################################
 // Main document loading =======================================================
@@ -26,8 +27,10 @@ function build() {
     buildSubmitButton();
     buildSearchButton();
     buildTestButton();
+    buildRandomButton();
     buildImgGrid(thread.DEF_IMGARR, thread.DEF_SETTINGS);
 }
+
 
 // Build Buttons ###############################################################
 // Button: Submit settings =====================================================
@@ -43,7 +46,7 @@ function buildSubmitButton() {
     }
 }
 
-// Button: Submit search query =====================================================
+// Button: Submit search query =================================================
 function buildSearchButton() {
     let button = document.querySelector("#search_btn");
     button.onclick = () => {
@@ -54,7 +57,33 @@ function buildSearchButton() {
     }
 }
 
-// Button: Get mbid's image ====================================================
+// Button: Randomize album covers order ========================================
+function buildRandomButton() {
+    let button = document.querySelector("#random_button");
+    button.onclick = () => {
+        // Local variables
+        let flat_arr = [];
+
+        // Update img array
+        img_arr = lib.updateImageArray(settings);
+
+        // Flatten array
+        img_arr.forEach(array => {
+            array.forEach(item => {
+                flat_arr.push(item);
+            })
+        })
+
+        // Randomize array
+        let flat_shuffled_arr = lib.shuffleArray(flat_arr);
+        let shuffled_arr = lib.buildFormattedArray(flat_shuffled_arr, settings);
+
+        // Build new array
+        buildImgGrid(shuffled_arr, settings);
+    }
+}
+
+// Button: TEST ================================================================
 function buildTestButton() {
     // Local variables
     let url="https://ia801602.us.archive.org/23/items/mbid-f6483d43-aa10-4131-b594-9ce882970130/index.json";
@@ -161,6 +190,7 @@ function buildQueryGrid(queryArray) {
         query_grid.appendChild(local_row);
     }
 }
+
 
 // Build Drag Events ###########################################################
 /*
