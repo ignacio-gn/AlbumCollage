@@ -2,7 +2,7 @@ import * as lib from "./helpers.js";
 import * as thread from "./thread_local.js";
 
 /* TODO
-- Implement downloading functionality
+- Enhance download quality
 */
 
 
@@ -11,6 +11,7 @@ let settings = thread.DEF_SETTINGS;
 let img_arr = thread.DEF_IMGARR;
 let img_selected;
 let dragged;
+let loaded_images = 0;
 
 
 // Build JS functions ##########################################################
@@ -22,6 +23,7 @@ function build() {
     buildTestButton();
     buildRandomButton();
     buildImgGrid(thread.DEF_IMGARR, thread.DEF_SETTINGS);
+    buildDownloadButton();
 }
 
 
@@ -46,7 +48,7 @@ function buildSearchButton() {
         let search_query = lib.getSearchQuery();
         lib.clearImageArray();
         lib.getAlbumCovers(search_query);
-        implicitlyWait();
+        implicitlyWaitAPI();
     }
 }
 
@@ -73,6 +75,16 @@ function buildRandomButton() {
 
         // Build new array
         buildImgGrid(shuffled_arr, settings);
+    }
+}
+
+function buildDownloadButton() {
+    let button = document.querySelector("#download_button");
+    button.onclick = () => {
+        // Update img array
+        img_arr = lib.updateImageArray(settings);
+        // Render and download canvas
+        printToCanvas(img_arr);
     }
 }
 
@@ -248,11 +260,68 @@ function checkAPIResponse() {
         buildQueryGrid(lib.global_image_array)
     }
     else {
-        implicitlyWait();
+        implicitlyWaitAPI();
     }
 }
 
-// ImplicitlyWait (async) ======================================================
-function implicitlyWait() {
+// ImplicitlyWait for API (async) ==============================================
+function implicitlyWaitAPI() {
     setTimeout(checkAPIResponse, 1000)
+}
+
+
+// Canvas functions ############################################################
+// Print image to canvas =======================================================
+function printToCanvas(sources) {
+    // Local variables
+    loaded_images = 0;
+
+    // Define canvas
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d")
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.width = sources[0].length * 100;
+    canvas.height = sources.length * 100;
+
+
+
+    // Define images
+    for (let row_idx = 0; row_idx < sources.length; row_idx ++) {
+        for (let col_idx = 0;  col_idx < sources[0].length; col_idx ++) {
+            // Render image
+            let img = new Image();
+            img.crossOrigin="anonymous"
+            img.addEventListener("load", function() {
+                ctx.drawImage(img, col_idx * 100, row_idx * 100, 100, 100)
+            }, false);
+            img.src = sources[row_idx][col_idx];
+            img.addEventListener("load", function() {
+                loaded_images += 1;
+            }, false)
+
+            // Trigger download on last image
+            if (row_idx == sources.length - 1 && col_idx == sources[0].length - 1) {
+                img.addEventListener("load", function() {
+                    setTimeout(downloadImage, 500)
+                }, false)
+            }
+        }
+    }
+}
+
+// Download image ==============================================================
+function downloadImage() {
+    if (loaded_images == img_arr.length * img_arr[0].length) {
+        let image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        window.location.href = image;
+    }
+    else {
+        implicitlyWaitCanvas();
+    }
+
+}
+
+// Implicitly wait async image rendering =======================================
+function implicitlyWaitCanvas() {
+    setTimeout(downloadImage, 500);
 }
