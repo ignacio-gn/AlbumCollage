@@ -1,11 +1,11 @@
 /* ############################ CONTAINERS ############################  */
 body {
-    background-color: #F9F3CB;
+    background-color: #9DA1A4;
 }
 
 header {
     display: flex;
-    background-color: #E99142;
+    background-color: #322C34;
 }
 
 img {
@@ -16,27 +16,34 @@ img {
     padding: 10px;
 }
 
+footer {
+    background-color: #314348;
+}
+
+.footer-container {
+    background-color: #322C34;
+}
+
 .separator {
     width: 3vw;
 }
 
 .outer-div {
-    background-color: #F2A06A;
+    background-color: #314348;
     margin: 5vh auto;
     padding: 5vh 5vw;
 }
 
 #outer-img-grid {
-    background-color: #FFFFFF;
+    background-color: #F7F9F9;
 }
 
 /* ############################ FONTS ############################  */
 header h1 {
-    color: #0C343D;
-    font-family: Helvetica;
-    font-weight: 100;
-    font-stretch: condensed;
-    font-size: 30px;
+    color: #F7F9F9;
+    font-family: "Roboto Slab", "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 3em;
 }
 
 @media screen and (max-width: 575px) {
@@ -49,10 +56,24 @@ header h1 {
 }
 
 .setting-header {
-    color: #0F0F0F;
-    font-family: Helvetica;
-    font-weight: lighter;
-    font-size: 20px;
+    color: #F7F9F9;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    font-size: 1.5em;
+}
+
+footer p {
+    color: #F7F9F9;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+footer a {
+    color: #5D8AB6;
+}
+footer a:hover {
+    color: #7DAAD6;
 }
 
 
@@ -68,16 +89,6 @@ button {
 .album-cover {
     padding: 0;
     margin: 0;
-}
-
-.btn-primary {
-    background-color: #234C8F;
-    border-color: #234C8F;
-}
-
-.btn-primary:hover {
-    background-color: #14A6C1;
-    border-color: #14A6C1;
 }
 
 

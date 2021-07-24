@@ -274,14 +274,15 @@ function implicitlyWaitAPI() {
 // Print image to canvas =======================================================
 function printToCanvas(sources) {
     // Local variables
+    let img_size = thread.DEF_IMGSIZE
     loaded_images = 0;
 
     // Define canvas
     let canvas = document.getElementById("canvas");
     let ctx = canvas.getContext("2d")
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    canvas.width = sources[0].length * 100;
-    canvas.height = sources.length * 100;
+    canvas.width = sources[0].length * img_size;
+    canvas.height = sources.length * img_size;
 
 
 
@@ -292,7 +293,7 @@ function printToCanvas(sources) {
             let img = new Image();
             img.crossOrigin="anonymous"
             img.addEventListener("load", function() {
-                ctx.drawImage(img, col_idx * 100, row_idx * 100, 100, 100)
+                ctx.drawImage(img, col_idx * img_size, row_idx * img_size, img_size, img_size)
             }, false);
             img.src = sources[row_idx][col_idx];
             img.addEventListener("load", function() {
@@ -312,7 +313,7 @@ function printToCanvas(sources) {
 // Download image ==============================================================
 function downloadImage() {
     if (loaded_images == img_arr.length * img_arr[0].length) {
-        let image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        let image = canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
         window.location.href = image;
     }
     else {
@@ -323,5 +324,5 @@ function downloadImage() {
 
 // Implicitly wait async image rendering =======================================
 function implicitlyWaitCanvas() {
-    setTimeout(downloadImage, 500);
+    setTimeout(downloadImage, 250);
 }
