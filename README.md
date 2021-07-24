@@ -21,15 +21,15 @@ For now, a screenshot of the collage must be taken to download the collage, but 
 # Examples #
 ### 5x5 ###
 
-![](https://github.com/ignacio-gn/AlbumCollage/blob/main/static/example2.png)
+![](https://github.com/ignacio-gn/AlbumCollage/blob/main/static/ex_2.png)
 
 ### 4x4 ###
 
-![](https://github.com/ignacio-gn/AlbumCollage/blob/main/static/example0.png)
+![](https://github.com/ignacio-gn/AlbumCollage/blob/main/static/ex_0.png)
 
 ### 3x4 ###
 
-![](https://github.com/ignacio-gn/AlbumCollage/blob/main/static/example1.png)
+![](https://github.com/ignacio-gn/AlbumCollage/blob/main/static/ex_1.png)
 
 
 # Acknowledgements #
