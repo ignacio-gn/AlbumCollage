@@ -3,7 +3,7 @@
 // Settings
 export const DEF_ROWS = 4;
 export const DEF_COLS = 4;
-export const DEF_IMGSIZE = 200;
+export const DEF_IMGSIZE = 300;
 export const DEF_SETTINGS = {
     n_rows: DEF_ROWS,
     n_cols: DEF_COLS,

@@ -2,7 +2,7 @@ import * as lib from "./helpers.js";
 import * as thread from "./thread_local.js";
 
 /* TODO
-- Enhance download quality
+- Add selector for download quality
 */
 
 
@@ -313,8 +313,20 @@ function printToCanvas(sources) {
 // Download image ==============================================================
 function downloadImage() {
     if (loaded_images == img_arr.length * img_arr[0].length) {
+        /*
         let image = canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
         window.location.href = image;
+        */
+        let link = document.createElement("a");
+        link.download = "image.png";
+
+        canvas.toBlob(function(blob) {
+            link.href = URL.createObjectURL(blob);
+            console.log(blob);
+            console.log(link.href);
+            link.click();
+        }, "image/png", 1.0);
+
     }
     else {
         implicitlyWaitCanvas();
