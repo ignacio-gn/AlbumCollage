@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", build);
 function build() {
     buildSubmitButton();
     buildSearchButton();
-    buildTestButton();
     buildRandomButton();
     buildImgGrid(thread.DEF_IMGARR, thread.DEF_SETTINGS);
     buildDownloadButton();
@@ -85,21 +84,6 @@ function buildDownloadButton() {
         img_arr = lib.updateImageArray(settings);
         // Render and download canvas
         printToCanvas(img_arr);
-    }
-}
-
-// Button: TEST ================================================================
-function buildTestButton() {
-    // Local variables
-    let url="https://ia801602.us.archive.org/23/items/mbid-f6483d43-aa10-4131-b594-9ce882970130/index.json";
-    let callback = function(content) {
-        console.log(content.images[0].thumbnails.large);
-    }
-    let btn = document.querySelector("#test_button");
-    // Build button
-    btn.onclick = () => {
-        //lib.loadXMLDoc(url, callback);
-        console.log("global: ", lib.global_image_array);
     }
 }
 
@@ -284,8 +268,6 @@ function printToCanvas(sources) {
     canvas.width = sources[0].length * img_size;
     canvas.height = sources.length * img_size;
 
-
-
     // Define images
     for (let row_idx = 0; row_idx < sources.length; row_idx ++) {
         for (let col_idx = 0;  col_idx < sources[0].length; col_idx ++) {
@@ -312,22 +294,19 @@ function printToCanvas(sources) {
 
 // Download image ==============================================================
 function downloadImage() {
+    // Check if images are rendered
     if (loaded_images == img_arr.length * img_arr[0].length) {
-        /*
-        let image = canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
-        window.location.href = image;
-        */
+        // Create download link
         let link = document.createElement("a");
         link.download = "image.png";
-
+        // Convert canvas to blob and download
         canvas.toBlob(function(blob) {
             link.href = URL.createObjectURL(blob);
-            console.log(blob);
-            console.log(link.href);
             link.click();
         }, "image/png", 1.0);
-
     }
+
+    // Wait until the images render
     else {
         implicitlyWaitCanvas();
     }
