@@ -1,5 +1,6 @@
 import * as thread from "./thread_local.js";
 
+
 // Global variables ############################################################
 export let global_image_array = [];
 
@@ -192,7 +193,6 @@ export function buildFormattedArray(arr, settings) {
 }
 
 
-
 // Search Query functionality ##################################################
 // Clear image array
 export function clearImageArray() {
@@ -203,5 +203,4 @@ export function clearImageArray() {
 export function clearSearchQuery() {
     let previous_rows = document.querySelectorAll("#query-row");
     previous_rows.forEach(item => item.remove());
-
 }
