@@ -1,20 +1,20 @@
 # AlbumCollage #
 # Description #
 This is a simple web application made to build collages out of HD album cover images, and to download them.
-The album cover images are standardized and are found within the web application taking a user query, using the [MusicBrainz API](https://musicbrainz.org/doc/MusicBrainz_API "MusicBrainz API").
-For now, a screenshot of the collage must be taken to download the collage, but a downloading feature is being developed.
+These images can be used as icons or cover images for playlists, but the image quality also allows them to be used as desktop backgrounds or screensavers.
+The album cover images have standardized dimensions and quality and are found within the web application using the [MusicBrainz API](https://musicbrainz.org/doc/MusicBrainz_API "MusicBrainz API").
 
 
 # Features #
-- Album cover image search and selection within the web application, with standardized dimensions.
+- Album cover image search and selection within the web application.
 - Collage dimensions edition (limited by viewport size).
-- Easy album cover images reordering thorugh dragging.
+- Easy album cover images reordering through dragging.
 - Random reordering of album cover images.
 - Downloading of collage in HD.
 
 
 # Upcoming features #
-- Loading album covers from spotify playlist.
+- Loading album covers from Spotify playlist.
 - Advanced album search.
 
 
@@ -27,7 +27,7 @@ For now, a screenshot of the collage must be taken to download the collage, but 
 
 ![](https://github.com/ignacio-gn/AlbumCollage/blob/main/static/ex_0.png)
 
-### 3x4 ###
+### 3x6 ###
 
 ![](https://github.com/ignacio-gn/AlbumCollage/blob/main/static/ex_1.png)
 
